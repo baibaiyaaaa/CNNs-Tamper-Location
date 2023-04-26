@@ -1,0 +1,20 @@
+2022-04-21-20:05:36
+
+data_dir: ./data
+arch: vgg_16_bn
+job_dir: ./result/vgg/record3
+batch_size: 256
+epochs: 150
+learning_rate: 0.01
+lr_decay_step: 50,100
+momentum: 0.9
+weight_decay: 0.005
+resume: False
+use_pretrain: True
+pretrain_dir: ./pre_trained/vgg_16_bn.pt
+rank_conv_prefix: ./rank_conv/vgg_16_bn
+compress_rate: [0.45]*7+[0.78]*5
+test_only: False
+test_model_dir: 
+gpu: 0
+

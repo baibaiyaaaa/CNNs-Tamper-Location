@@ -1,0 +1,53 @@
+
+
+python evaluate_cifar.py
+--data_dir ./data
+--arch vgg_16_bn
+--job_dir ./result/vgg/record3
+--batch_size 256
+--epochs 150
+--learning_rate 0.01
+--momentum 0.9
+--weight_decay 0.005
+--use_pretrain
+--pretrain_dir ./pre_trained/vgg_16_bn.pt
+--rank_conv_prefix ./rank_conv/vgg_16_bn
+--compress_rate [0.45]*7+[0.78]*5
+
+python evaluate_cifar.py --data_dir ./data --arch vgg_16_bn --job_dir ./result/vgg/record3 --batch_size 256 --pretrain_dir ./pre_trained/vgg_16_bn.pt --rank_conv_prefix ./rank_conv/vgg_16_bn
+
+python rank_generation.py --dataset cifar10 --arch vgg_16_bn --pretrain_dir ./pre_trained/vgg_16_bn.pt --limit 4 --gpu 0
+
+python cal_flops_params.py --arch resnet_56 --compress_rate [0.1]+[0.60]*35+[0.0]*2+[0.6]*6+[0.4]*3+[0.1]+[0.4]+[0.1]+[0.4]+[0.1]+[0.4]+[0.1]+[0.4]
+
+OrderedDict([(13, tensor([[[ 1.2141e-04,  2.0617e-04,  5.4445e-05],
+         [-1.4961e-05, -1.8060e-06,  3.8932e-05],
+         [ 6.8896e-05,  1.6001e-04, -4.4412e-05]],
+
+        [[ 1.6415e-05,  1.7546e-04,  7.2603e-05],
+         [ 4.8204e-05, -4.0233e-06, -6.9602e-05],
+         [ 1.4358e-04, -2.9692e-05, -1.1207e-04]],
+
+        [[ 2.0049e-05,  1.9142e-04, -7.3697e-05],
+         [ 1.1312e-04,  1.1837e-04, -1.5715e-05],
+         [ 1.4482e-04, -2.2846e-05,  6.5593e-05]]], device='cuda:0')), (37, tensor([[[-3.9007e-04, -1.6516e-04, -1.5695e-04],
+         [ 5.0890e-04,  5.9327e-04,  3.4717e-04],
+         [ 6.5313e-05,  3.0665e-04,  3.5175e-04]],
+
+        [[-4.3630e-04, -2.3868e-04, -3.3102e-04],
+         [ 1.0581e-05,  9.2697e-05, -2.9555e-04],
+         [-4.9303e-04, -3.7665e-04, -2.5339e-04]],
+
+        [[ 1.3685e-04,  5.0153e-04,  3.2489e-04],
+         [ 1.4128e-04,  1.9254e-04,  2.9925e-05],
+         [-6.4090e-04, -5.8979e-04, -5.7580e-04]]], device='cuda:0')), (48, tensor([[[ 2.5121e-04,  1.0909e-04,  9.5431e-06],
+         [ 1.2711e-04,  5.0185e-05, -9.1938e-07],
+         [-1.3096e-04, -4.4248e-05, -1.1809e-04]],
+
+        [[ 1.6519e-04,  9.6893e-05,  1.1690e-04],
+         [ 1.0422e-04,  1.3316e-04,  8.1075e-05],
+         [-1.7600e-04,  9.8166e-05, -8.9745e-05]],
+
+        [[ 3.3455e-04,  3.3086e-04,  2.0356e-04],
+         [ 8.3513e-05,  3.1744e-04,  1.2321e-04],
+         [-2.3651e-05,  8.6187e-05, -1.0732e-05]]], device='cuda:0'))])

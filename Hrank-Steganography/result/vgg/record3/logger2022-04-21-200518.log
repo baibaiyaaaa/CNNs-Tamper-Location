@@ -1,0 +1,76 @@
+04/21 08:05:18 PM | args = Namespace(arch='vgg_16_bn', batch_size=256, compress_rate='[0.45]*7+[0.78]*5', data_dir='./data', epochs=150, gpu='0', job_dir='./result/vgg/record3', learning_rate=0.01, lr_decay_step='50,100', momentum=0.9, pretrain_dir='./pre_trained/vgg_16_bn.pt', rank_conv_prefix='./rank_conv/vgg_16_bn', resume=False, test_model_dir='', test_only=False, use_pretrain=True, weight_decay=0.005)
+04/21 08:05:18 PM | compress_rate:[0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.45, 0.78, 0.78, 0.78, 0.78, 0.78]
+04/21 08:05:18 PM | ==> Building model..
+04/21 08:05:18 PM | VGG(
+  (features): Sequential(
+    (conv0): Conv2d(3, 35, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm0): BatchNorm2d(35, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu0): ReLU(inplace=True)
+    (conv1): Conv2d(35, 35, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm1): BatchNorm2d(35, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (pool2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv3): Conv2d(35, 70, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm3): BatchNorm2d(70, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu3): ReLU(inplace=True)
+    (conv4): Conv2d(70, 70, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm4): BatchNorm2d(70, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu4): ReLU(inplace=True)
+    (pool5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv6): Conv2d(70, 140, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm6): BatchNorm2d(140, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu6): ReLU(inplace=True)
+    (conv7): Conv2d(140, 140, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm7): BatchNorm2d(140, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu7): ReLU(inplace=True)
+    (conv8): Conv2d(140, 140, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm8): BatchNorm2d(140, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu8): ReLU(inplace=True)
+    (pool9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv10): Conv2d(140, 112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm10): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu10): ReLU(inplace=True)
+    (conv11): Conv2d(112, 112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm11): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu11): ReLU(inplace=True)
+    (conv12): Conv2d(112, 112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm12): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu12): ReLU(inplace=True)
+    (pool13): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (conv14): Conv2d(112, 112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm14): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu14): ReLU(inplace=True)
+    (conv15): Conv2d(112, 112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm15): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu15): ReLU(inplace=True)
+    (conv16): Conv2d(112, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (norm16): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu16): ReLU(inplace=True)
+  )
+  (classifier): Sequential(
+    (linear1): Linear(in_features=512, out_features=512, bias=True)
+    (norm1): BatchNorm1d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU(inplace=True)
+    (linear2): Linear(in_features=512, out_features=10, bias=True)
+  )
+)
+04/21 08:05:20 PM | Params: 1901836.00
+04/21 08:05:20 PM | Flops: 66950272.00
+04/21 08:05:21 PM | resuming from pretrain model
+04/21 08:05:21 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv1.npy
+04/21 08:05:21 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv2.npy
+04/21 08:05:21 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv3.npy
+04/21 08:05:21 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv4.npy
+04/21 08:05:22 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv5.npy
+04/21 08:05:22 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv6.npy
+04/21 08:05:22 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv7.npy
+04/21 08:05:22 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv8.npy
+04/21 08:05:22 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv9.npy
+04/21 08:05:23 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv10.npy
+04/21 08:05:23 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv11.npy
+04/21 08:05:23 PM | loading rank from: ./rank_conv/vgg_16_bn/rank_conv12.npy
+04/21 08:05:24 PM | learning_rate: 0.01
+04/21 08:05:27 PM | Epoch[0](0/196): Loss 2.3128 Prec@1(1,5) 14.84, 55.86
+04/21 08:05:29 PM | Epoch[0](50/196): Loss 0.9669 Prec@1(1,5) 66.41, 95.98
+04/21 08:05:30 PM | Epoch[0](100/196): Loss 0.7902 Prec@1(1,5) 72.51, 97.34
+04/21 08:05:32 PM | Epoch[0](150/196): Loss 0.6956 Prec@1(1,5) 76.05, 97.92
